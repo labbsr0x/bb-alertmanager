@@ -2,10 +2,10 @@ global:
 
 route:
   receiver: 'bot'
+  group_by: [prsn, alertname]
 
 receivers:
 - name: 'bot'
   webhook_configs:
   - send_resolved: true
     url: '$WEBHOOK_URL'
-
