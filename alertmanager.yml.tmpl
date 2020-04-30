@@ -9,3 +9,12 @@ receivers:
   webhook_configs:
   - send_resolved: true
     url: '$WEBHOOK_URL'
+
+# Mute warning alerts when critical alerts are activated. The alert must to 
+# have the same alertname and prsn for the inhibition to take effect.
+inhibit_rules:
+  - target_match:
+      severity: 'warning'
+    source_match:
+      severity: 'critical'
+    equal: ['alertname', 'prsn']
